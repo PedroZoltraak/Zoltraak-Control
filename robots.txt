@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pedrozoltraak.github.io/Zoltraak-Control/sitemap.xml

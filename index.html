@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#06080e" />
+  <meta name="description" content="Zoltraak Control Telemetry — overlay gratuita e personalizável de telemetria em tempo real para F1 26." />
+  <meta name="keywords" content="F1 26 telemetry, F1 26 overlay, pedal telemetry, throttle brake overlay, Zoltraak Control Telemetry" />
+  <meta name="author" content="PedroZoltraak" />
+  <meta property="og:title" content="Zoltraak Control Telemetry — F1 26 Telemetry Overlay" />
+  <meta property="og:description" content="Telemetria em tempo real. Layout dinâmico. Gratuito para testar." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pedrozoltraak.github.io/Zoltraak-Control/" />
+  <link rel="canonical" href="https://pedrozoltraak.github.io/Zoltraak-Control/" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="preload" href="assets/zoltraak_logo_horizontal.png" as="image" />
+  <link rel="preload" href="assets/gameplay-full.webp" as="image" />
+  <title>Zoltraak Control Telemetry — F1 26 Telemetry Overlay</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SoftwareApplication",
+    "name":"Zoltraak Control Telemetry",
+    "applicationCategory":"GameApplication",
+    "operatingSystem":"Windows 10, Windows 11",
+    "softwareVersion":"1.0",
+    "isAccessibleForFree":true,
+    "url":"https://pedrozoltraak.github.io/Zoltraak-Control/",
+    "downloadUrl":"https://github.com/PedroZoltraak/Zoltraak-Control/releases/latest",
+    "author":{"@type":"Person","name":"PedroZoltraak"}
+  }
+  </script>
+</head>
+<body>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <div class="shell nav-wrap">
+      <a class="brand" href="#top" aria-label="Zoltraak Control Telemetry">
+        <img src="assets/zoltraak_logo_horizontal.png" alt="Zoltraak Control Telemetry" />
+      </a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span></button>
+      <nav class="nav" id="nav" aria-label="Navegação principal">
+        <a href="#product" data-i18n="nav_product">Produto</a>
+        <a href="#features" data-i18n="nav_features">Recursos</a>
+        <a href="#setup" data-i18n="nav_setup">Configuração</a>
+        <a href="#about" data-i18n="nav_about">Sobre</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="lang-btn" id="langToggle" type="button" aria-label="Alterar idioma">EN</button>
+        <a class="button button-small button-ghost" href="https://github.com/PedroZoltraak/Zoltraak-Control" target="_blank" rel="noopener">GitHub</a>
+        <a class="button button-small button-primary nav-download" href="#download" data-i18n="nav_download">Download</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="product">
+      <div class="hero-backdrop" aria-hidden="true">
+        <img src="assets/gameplay-full.webp" alt="" />
+        <div class="hero-backdrop-mask"></div>
+      </div>
+      <div class="shell hero-grid">
+        <div class="hero-copy reveal">
+          <div class="badge-row">
+            <span class="status-badge"><i></i><span data-i18n="hero_badge">F1 26 • TELEMETRIA EM TEMPO REAL</span></span>
+            <span class="version-badge" id="heroVersion">v1.0</span>
+          </div>
+          <h1><span data-i18n="hero_title_1">Dados que acompanham</span> <span class="gradient-text" data-i18n="hero_title_2">cada movimento.</span></h1>
+          <p class="hero-lead" data-i18n="hero_lead">Uma overlay leve e personalizável para acompanhar throttle, brake, ERS, steering, velocidade, combustível e Active Aero sem tirar o foco da pista.</p>
+          <div class="hero-actions">
+            <a id="heroDownload" class="button button-primary button-large" href="https://github.com/PedroZoltraak/Zoltraak-Control/releases/latest" target="_blank" rel="noopener">
+              <span data-i18n="download_now">Baixar Zoltraak Control</span><span class="button-arrow">↓</span>
+            </a>
+            <a class="button button-ghost button-large" href="#real-ui"><span class="play-dot">▶</span><span data-i18n="see_product">Ver o Control</span></a>
+          </div>
+          <div class="release-meta" aria-live="polite">
+            <span><strong id="latestVersion">v1.0</strong> <span data-i18n="latest_release">versão atual</span></span>
+            <span class="meta-dot"></span>
+            <span><strong id="downloadCount">—</strong> <span data-i18n="downloads">downloads</span></span>
+            <span class="meta-dot"></span>
+            <span>Windows 10/11</span>
+          </div>
+          <p class="micro-note" data-i18n="hero_note">Projeto pessoal • gratuito para testar • ainda em desenvolvimento</p>
+        </div>
+
+        <div class="hero-device reveal reveal-delay-1">
+          <div class="device-glow"></div>
+          <div class="device-frame">
+            <div class="device-top"><span>ZOLTRAAK CONTROL</span><span class="live"><i></i> LIVE</span></div>
+            <div class="telemetry-mock" aria-label="Demonstração animada da telemetria">
+              <div class="history-module">
+                <svg viewBox="0 0 430 132" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="tFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#67f0be" stop-opacity=".28"/><stop offset="1" stop-color="#67f0be" stop-opacity="0"/></linearGradient>
+                    <linearGradient id="bFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff5b76" stop-opacity=".23"/><stop offset="1" stop-color="#ff5b76" stop-opacity="0"/></linearGradient>
+                  </defs>
+                  <path id="throttleArea" class="area throttle-area" d=""/><path id="brakeArea" class="area brake-area" d=""/>
+                  <path id="throttleLine" class="telemetry-line throttle-line" d=""/><path id="brakeLine" class="telemetry-line brake-line" d=""/>
+                </svg>
+                <small>PEDAL HISTORY</small>
+              </div>
+              <div class="telemetry-lower">
+                <div class="mini-bars">
+                  <div class="mini-bar"><i id="thrBar"></i><span>THR</span><b id="thrValue">0%</b></div>
+                  <div class="mini-bar"><i id="brkBar"></i><span>BRK</span><b id="brkValue">0%</b></div>
+                  <div class="mini-bar"><i id="ersBar"></i><span>ERS</span><b id="ersValue">74%</b></div>
+                </div>
+                <div class="steer-module">
+                  <div class="aero-strip"><span></span><span></span><span></span><span></span><em>ACTIVE AERO</em><span></span><span></span><span></span><span></span></div>
+                  <div class="steer-wheel" id="wheel"><div class="grip g-left"></div><div class="grip g-right"></div><div class="screen"><strong id="gearValue">7</strong><span id="speedValue">296</span><small>KPH</small></div></div>
+                </div>
+                <div class="fuel"><span>FUEL</span><b id="fuelValue">49%</b><i><em></em></i></div>
+              </div>
+            </div>
+            <div class="device-bottom"><span data-i18n="hero_device_caption">Entradas ao vivo. Layout do seu jeito.</span><b>60 Hz</b></div>
+          </div>
+          <div class="floating-chip chip-one"><span>UDP</span><b>20777</b></div>
+          <div class="floating-chip chip-two"><span data-i18n="chip_latency">RESPOSTA</span><b data-i18n="chip_realtime">TEMPO REAL</b></div>
+        </div>
+      </div>
+      <div class="shell trust-strip reveal">
+        <div><strong>60 Hz</strong><span data-i18n="stat_rate">Atualização contínua</span></div>
+        <div><strong>UDP</strong><span data-i18n="stat_udp">Conexão direta com F1 26</span></div>
+        <div><strong>MODULAR</strong><span data-i18n="stat_modular">Escolha cada elemento</span></div>
+        <div><strong>FREE</strong><span data-i18n="stat_free">Projeto pessoal gratuito</span></div>
+      </div>
+    </section>
+
+    <section class="section real-ui" id="real-ui">
+      <div class="shell">
+        <div class="section-heading centered reveal">
+          <div class="eyebrow" data-i18n="ui_eyebrow">O CONTROL DE VERDADE</div>
+          <h2 data-i18n="ui_title">Configure sem complicação.</h2>
+          <p data-i18n="ui_lead">Uma interface única para ativar a overlay, escolher módulos, ajustar tamanho, opacidade e preparar tudo antes de entrar na pista.</p>
+        </div>
+        <div class="app-showcase reveal">
+          <div class="app-window">
+            <div class="window-bar"><span></span><span></span><span></span><b>Zoltraak Control Telemetry v1.0</b></div>
+            <img src="assets/control-panel.webp" alt="Painel principal do Zoltraak Control Telemetry" data-i18n-alt="panel_alt" />
+          </div>
+          <div class="app-callout callout-a"><span>01</span><div><b data-i18n="callout_preview_title">Preview instantâneo</b><small data-i18n="callout_preview_text">Veja o layout antes de abrir o jogo.</small></div></div>
+          <div class="app-callout callout-b"><span>02</span><div><b data-i18n="callout_control_title">Ajustes em tempo real</b><small data-i18n="callout_control_text">Escala, largura, altura e opacidade.</small></div></div>
+        </div>
+        <div class="mini-gallery reveal">
+          <button class="gallery-card" type="button" data-image="assets/control-panel.webp"><img src="assets/control-panel.webp" alt="Tela da overlay no Zoltraak Control"/><span><b data-i18n="gallery_panel">Painel principal</b><small data-i18n="gallery_panel_sub">Overlay e personalização</small></span></button>
+          <button class="gallery-card" type="button" data-image="assets/control-guide.webp"><img src="assets/control-guide.webp" alt="Guia de configuração do Zoltraak Control"/><span><b data-i18n="gallery_guide">Guia integrado</b><small data-i18n="gallery_guide_sub">UDP explicado dentro do app</small></span></button>
+          <button class="gallery-card" type="button" data-image="assets/control-about.webp"><img src="assets/control-about.webp" alt="Página Sobre do Zoltraak Control"/><span><b data-i18n="gallery_about">Sobre o projeto</b><small data-i18n="gallery_about_sub">Versão, novidades e identidade</small></span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gameplay-section" id="features">
+      <div class="shell gameplay-grid">
+        <div class="gameplay-copy reveal">
+          <div class="eyebrow" data-i18n="game_eyebrow">FEITO PARA A PISTA</div>
+          <h2 data-i18n="game_title">Informação útil sem poluir a visão.</h2>
+          <p data-i18n="game_lead">A overlay acompanha seus inputs em tempo real enquanto você dirige. O objetivo é mostrar exatamente o necessário para entender sua pilotagem.</p>
+          <div class="feature-list">
+            <div><span class="feature-symbol green">↗</span><p><b data-i18n="game_f1_title">Throttle & Brake</b><small data-i18n="game_f1_text">Aplicação, release e histórico visual dos pedais.</small></p></div>
+            <div><span class="feature-symbol blue">◈</span><p><b data-i18n="game_f2_title">Steering & velocidade</b><small data-i18n="game_f2_text">Correções de volante, marcha e KPH em um único bloco.</small></p></div>
+            <div><span class="feature-symbol purple">⚡</span><p><b data-i18n="game_f3_title">ERS, combustível e Active Aero</b><small data-i18n="game_f3_text">Dados importantes sem precisar abrir outra janela.</small></p></div>
+          </div>
+        </div>
+        <div class="game-frame reveal reveal-delay-1">
+          <img src="assets/gameplay-full.webp" alt="Zoltraak Control Telemetry funcionando no F1 26" />
+          <div class="game-frame-top"><span><i></i> LIVE TELEMETRY</span><b>F1 26</b></div>
+          <div class="game-callout"><span data-i18n="game_callout">OVERLAY COMPLETA</span><b>THR • BRK • ERS • STEERING • SPEED • FUEL</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section customize-section">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <div class="eyebrow" data-i18n="custom_eyebrow">PERSONALIZAÇÃO</div>
+          <h2 data-i18n="custom_title">Sua tela. Seus dados.</h2>
+          <p data-i18n="custom_lead">Não quer usar tudo? Desative módulos e o layout se compacta automaticamente. Ajuste posição, tamanho e transparência até encaixar no seu cockpit.</p>
+        </div>
+        <div class="custom-grid">
+          <div class="custom-tabs reveal" role="tablist" aria-label="Exemplos de layout">
+            <button class="custom-tab active" data-layout="full" type="button"><span>01</span><div><b data-i18n="layout_full">Completa</b><small data-i18n="layout_full_text">Todos os módulos ativos</small></div></button>
+            <button class="custom-tab" data-layout="compact" type="button"><span>02</span><div><b data-i18n="layout_compact">Compacta</b><small data-i18n="layout_compact_text">Só os dados que você usa</small></div></button>
+            <button class="custom-tab" data-layout="minimal" type="button"><span>03</span><div><b data-i18n="layout_minimal">Minimalista</b><small data-i18n="layout_minimal_text">Mais espaço para o jogo</small></div></button>
+          </div>
+          <div class="custom-visual reveal reveal-delay-1">
+            <img id="layoutScreenshot" src="assets/gameplay-full.webp" alt="Exemplo de layout da overlay" />
+            <div class="layout-overlay" id="layoutOverlay">
+              <div class="lo-history"><i></i><i></i></div>
+              <div class="lo-bars"><i></i><i></i><i></i></div>
+              <div class="lo-wheel">◉</div>
+              <div class="lo-speed"><b>7</b><span>296</span></div>
+              <div class="lo-fuel"><i></i></div>
+            </div>
+            <div class="layout-label"><span data-i18n="layout_live">LAYOUT DINÂMICO</span><b id="layoutName">FULL</b></div>
+          </div>
+        </div>
+        <div class="control-pills reveal">
+          <span data-i18n="pill_move">↔ Mover</span><span data-i18n="pill_resize">↗ Redimensionar</span><span data-i18n="pill_opacity">◐ Opacidade</span><span data-i18n="pill_modules">⊞ Módulos</span><span data-i18n="pill_save">✓ Preferências salvas</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section setup-section" id="setup">
+      <div class="shell">
+        <div class="section-heading split-heading reveal">
+          <div><div class="eyebrow" data-i18n="setup_eyebrow">CONFIGURAÇÃO</div><h2 data-i18n="setup_title">Na pista em poucos minutos.</h2></div>
+          <p data-i18n="setup_lead">O próprio Control inclui um guia. Você só precisa apontar o F1 26 para o endereço e porta corretos.</p>
+        </div>
+        <div class="setup-flow reveal">
+          <article><span>01</span><div class="step-icon">↓</div><h3 data-i18n="s1_title">Instale</h3><p data-i18n="s1_text">Baixe o instalador oficial pelo GitHub Releases e conclua a instalação no Windows.</p></article>
+          <i class="flow-line"></i>
+          <article><span>02</span><div class="step-icon">⌁</div><h3 data-i18n="s2_title">Conecte</h3><p data-i18n="s2_text">No F1 26: UDP 127.0.0.1, porta 20777, formato 2026 e frequência de 60 Hz.</p></article>
+          <i class="flow-line"></i>
+          <article><span>03</span><div class="step-icon">▦</div><h3 data-i18n="s3_title">Personalize</h3><p data-i18n="s3_text">Selecione os módulos e ajuste escala, posição, largura, altura e opacidade.</p></article>
+          <i class="flow-line"></i>
+          <article><span>04</span><div class="step-icon">▶</div><h3 data-i18n="s4_title">Dirija</h3><p data-i18n="s4_text">Ative a overlay e acompanhe os seus inputs em tempo real durante a sessão.</p></article>
+        </div>
+        <div class="udp-card reveal">
+          <div><span data-i18n="udp_title">Configuração recomendada</span><small data-i18n="udp_sub">F1 26 → Settings → Telemetry Settings</small></div>
+          <dl><div><dt>IP</dt><dd>127.0.0.1</dd></div><div><dt>PORT</dt><dd>20777</dd></div><div><dt>FORMAT</dt><dd>2026</dd></div><div><dt>RATE</dt><dd>60 Hz</dd></div></dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="shell about-grid">
+        <div class="about-visual reveal">
+          <div class="about-icon-wrap"><img src="assets/zoltraak_icon.png" alt="Ícone do Zoltraak Control"/><i></i><i></i><i></i></div>
+          <div class="about-stat"><span data-i18n="about_status">STATUS</span><b data-i18n="about_status_value">EM DESENVOLVIMENTO</b></div>
+        </div>
+        <div class="about-copy reveal reveal-delay-1">
+          <div class="eyebrow" data-i18n="about_eyebrow">SOBRE O PROJETO</div>
+          <h2 data-i18n="about_title">Começou porque eu queria usar.</h2>
+          <p data-i18n="about_p1">O Zoltraak Control Telemetry nasceu como um projeto pessoal para o meu próprio uso no F1 26. Eu queria uma telemetria simples, personalizável e gratuita, mas não encontrava algo que funcionasse exatamente do jeito que eu imaginava.</p>
+          <p data-i18n="about_p2">Então decidi criar a minha própria e compartilhar com quem também quiser testar. Não é um produto profissional ou comercial. Ainda está em desenvolvimento, pode precisar de ajustes e será melhorado com o tempo.</p>
+          <blockquote data-i18n="about_quote">“Obrigado por instalar e dar uma oportunidade ao meu projeto pessoal Zoltraak Control Telemetry.”</blockquote>
+          <div class="signature"><span data-i18n="made_by">Feito por</span><strong>PedroZoltraak</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section download-section" id="download">
+      <div class="shell download-card reveal">
+        <div class="download-pattern" aria-hidden="true"></div>
+        <div class="download-main">
+          <span class="status-badge"><i></i><span data-i18n="download_badge">VERSÃO PÚBLICA • WINDOWS</span></span>
+          <h2 data-i18n="download_title">Pronto para testar?</h2>
+          <p data-i18n="download_text">Baixe gratuitamente pelo GitHub Releases. A instalação é simples e suas preferências ficam salvas para as próximas versões.</p>
+          <div class="download-actions">
+            <a id="mainDownload" class="button button-primary button-xl" href="https://github.com/PedroZoltraak/Zoltraak-Control/releases/latest" target="_blank" rel="noopener"><span data-i18n="download_installer">Baixar instalador</span><span class="button-arrow">↓</span></a>
+            <a class="button button-ghost button-xl" href="https://github.com/PedroZoltraak/Zoltraak-Control/releases" target="_blank" rel="noopener" data-i18n="all_releases">Ver versões</a>
+          </div>
+        </div>
+        <div class="download-side">
+          <div><span data-i18n="download_version">VERSÃO</span><b id="downloadVersion">v1.0</b></div>
+          <div><span data-i18n="download_os">SISTEMA</span><b>Windows 10/11</b></div>
+          <div><span data-i18n="download_price">PREÇO</span><b>FREE</b></div>
+          <div><span data-i18n="download_source">FONTE</span><b>GitHub Releases</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq-section">
+      <div class="shell faq-grid">
+        <div class="section-heading reveal"><div class="eyebrow">FAQ</div><h2 data-i18n="faq_title">Antes de instalar.</h2></div>
+        <div class="faq-list reveal reveal-delay-1">
+          <details open><summary data-i18n="faq1_q">É gratuito?</summary><p data-i18n="faq1_a">Sim. O Zoltraak Control Telemetry é um projeto pessoal compartilhado gratuitamente para quem quiser testar.</p></details>
+          <details><summary data-i18n="faq2_q">Funciona em qual jogo?</summary><p data-i18n="faq2_a">A versão atual foi criada para a telemetria UDP do F1 26 no Windows.</p></details>
+          <details><summary data-i18n="faq3_q">Ainda pode ter bugs?</summary><p data-i18n="faq3_a">Sim. O projeto ainda está em desenvolvimento e continuará recebendo correções e melhorias.</p></details>
+          <details><summary data-i18n="faq4_q">Preciso pagar por futuras versões?</summary><p data-i18n="faq4_a">Não existe cobrança planejada para este projeto pessoal. As versões são publicadas pelo GitHub Releases.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer-grid">
+      <div class="footer-brand"><img src="assets/zoltraak_logo_horizontal.png" alt="Zoltraak Control Telemetry"/><p data-i18n="footer_copy">Projeto pessoal de telemetria para F1 26.</p></div>
+      <div class="footer-links"><a href="#features" data-i18n="nav_features">Recursos</a><a href="#setup" data-i18n="nav_setup">Configuração</a><a href="#about" data-i18n="nav_about">Sobre</a><a href="https://github.com/PedroZoltraak/Zoltraak-Control" target="_blank" rel="noopener">GitHub</a></div>
+      <p class="legal" data-i18n="legal">Projeto independente e não afiliado à Formula 1, EA SPORTS ou Codemasters. F1 é marca de seus respectivos proprietários.</p>
+      <p class="copyright">© <span id="year"></span> PedroZoltraak</p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true"><button id="lightboxClose" type="button" aria-label="Fechar">×</button><img id="lightboxImage" alt="Preview ampliado"/></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
