@@ -1,0 +1,18 @@
+{
+  "key": "logitech-g923",
+  "name": "Logitech G923",
+  "brand": "Logitech",
+  "model": "G923",
+  "enabled": true,
+  "aliases": [
+    "logitech g923",
+    "g hub g923 racing wheel",
+    "g923 racing wheel"
+  ],
+  "image": "images/logitech-g923.png",
+  "sha256": "COLE_AQUI_O_SHA256_DA_IMAGEM",
+  "target_width": 96,
+  "offset_x": 0,
+  "offset_y": 0,
+  "steering_total_degrees": 360
+}
