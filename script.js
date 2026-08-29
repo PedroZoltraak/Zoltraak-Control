@@ -107,7 +107,8 @@ async function loadRelease(){
  try{
   const latest=await fetch(`${API}/releases/latest`,{headers:{Accept:'application/vnd.github+json'}}).then(r=>{if(!r.ok)throw new Error(r.status);return r.json()});
   setVersion(latest.tag_name||FALLBACK_VERSION);
-  const asset=(latest.assets||[]).find(a=>/Zoltraak-Control-Setup.*\.exe$/i.test(a.name))||(latest.assets||[]).find(a=>/\.exe$/i.test(a.name));
+  const assets=latest.assets||[];
+  const asset=assets.find(a=>/^Zoltraak-Control-Setup-v1\.0-FINAL\.exe$/i.test(a.name))||assets.find(a=>/Zoltraak-Control-Setup.*\.exe$/i.test(a.name))||assets.find(a=>/\.exe$/i.test(a.name));
   if(asset){heroDownload.href=asset.browser_download_url;mainDownload.href=asset.browser_download_url}
   const all=await fetch(`${API}/releases?per_page=100`,{headers:{Accept:'application/vnd.github+json'}}).then(r=>r.ok?r.json():[]);
   const count=(Array.isArray(all)?all:[]).flatMap(r=>r.assets||[]).filter(a=>/Zoltraak-Control-Setup/i.test(a.name)).reduce((n,a)=>n+(a.download_count||0),0);
